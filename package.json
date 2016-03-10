@@ -1,16 +1,17 @@
 {
-	"name": "NodejsStarterApp",
-	"version": "0.0.1",
-    "private": true,
-	"scripts": {
-		"start": "node app.js"
-	},
-	"dependencies": {
-		"express": "4.13.x",
-		"cfenv": "1.0.x"
-	},
-	"repository": {},
-	"engines": {
-		"node": "4.2.x"
-	} 
+  "name": "NodejsStarterApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "botkit": "0.0.8",
+    "cfenv": "1.0.x",
+    "express": "4.13.x"
+  },
+  "repository": {},
+  "engines": {
+    "node": "4.2.x"
+  }
 }
