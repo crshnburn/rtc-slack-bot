@@ -7,8 +7,7 @@
   },
   "dependencies": {
     "botkit": "0.0.8",
-    "cfenv": "1.0.x",
-    "express": "4.13.x"
+    "cfenv": "1.0.x"
   },
   "repository": {},
   "engines": {
