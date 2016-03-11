@@ -21,7 +21,9 @@ var bot = controller.spawn({
 }).startRTM()
 
 controller.hears(['(task|story|epic|defect) (\d*)'],'ambient',function(bot, message){
-  var matches = message.text.match(/(task|story|epic|defect) (\d*)/i)
-  var id = matches[2]
-  bot.reply(message, "https://jazz306.hursley.ibm.com:9443/ccm/resource/itemName/com.ibm.team.workitem.WorkItem/"+id)
+  var matches = message.text.match(/(task|story|epic|defect) (\d*)/ig)
+  for(var i=0; i < matches.length; i++){
+    var id = matches[i].split(" ")[1]
+    bot.reply(message, "https://jazz306.hursley.ibm.com:9443/ccm/resource/itemName/com.ibm.team.workitem.WorkItem/"+id)
+  }
 })
