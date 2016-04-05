@@ -17,13 +17,13 @@ var controller = Botkit.slackbot({
 })
 
 var bot = controller.spawn({
-  token: "xoxb-25814718499-sXqQ27waMvKPtS67uozQQ1mR"
+  token: process.env.BOT_API_TOKEN
 }).startRTM()
 
 controller.hears(['(task|story|epic|defect) (\d*)'],'ambient',function(bot, message){
   var matches = message.text.match(/(task|story|epic|defect) (\d*)/ig)
   for(var i=0; i < matches.length; i++){
     var id = matches[i].split(" ")[1]
-    bot.reply(message, "https://jazz306.hursley.ibm.com:9443/ccm/resource/itemName/com.ibm.team.workitem.WorkItem/"+id)
+    bot.reply(message, process.env.JAZZ_URI + "/resource/itemName/com.ibm.team.workitem.WorkItem/"+id)
   }
 })
