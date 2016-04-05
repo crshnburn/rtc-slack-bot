@@ -19,7 +19,9 @@ var controller = Botkit.slackbot({
 var bot = controller.spawn({
   token: process.env.BOT_API_TOKEN
 }).startRTM(function(err) {
-	console.error("Bot failed to connect to Slack. Error: " + err)
+	if (err) {
+		console.error("Bot failed to connect to Slack. Error: " + err)
+	}
 })
 
 controller.hears(['(task|story|epic|defect) (\d*)'],'ambient',function(bot, message){
