@@ -18,7 +18,9 @@ var controller = Botkit.slackbot({
 
 var bot = controller.spawn({
   token: process.env.BOT_API_TOKEN
-}).startRTM()
+}).startRTM(function(err) {
+	console.error("Bot failed to connect to Slack. Error: " + err)
+})
 
 controller.hears(['(task|story|epic|defect) (\d*)'],'ambient',function(bot, message){
   var matches = message.text.match(/(task|story|epic|defect) (\d*)/ig)
