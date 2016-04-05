@@ -17,7 +17,7 @@ var controller = Botkit.slackbot({
 })
 
 var bot = controller.spawn({
-  token: "xoxb-25814718499-sXqQ27waMvKPtS67uozQQ1mR"
+  token: "xoxb-32137091264-uciU9bK2NY3UbedqEE9AFFIf"
 }).startRTM()
 
 controller.hears(['(task|story|epic|defect) (\d*)'],'ambient',function(bot, message){
