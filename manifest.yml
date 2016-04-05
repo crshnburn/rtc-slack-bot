@@ -2,7 +2,6 @@ applications:
 - path: .
   memory: 256M
   instances: 1
-  domain: mybluemix.net
   name: rtc-slack-bot
-  host: rtc-slack-bot
-  disk_quota: 1024M
+  no-route: true
+  disk_quota: 256M
