@@ -26,8 +26,20 @@ var bot = controller.spawn({
 
 controller.hears(['(task|story|epic|defect) (\d*)'],'ambient',function(bot, message){
   var matches = message.text.match(/(task|story|epic|defect) (\d*)/ig)
+  var attachments = [];
   for(var i=0; i < matches.length; i++){
     var id = matches[i].split(" ")[1]
-    bot.reply(message, process.env.JAZZ_URI + "/resource/itemName/com.ibm.team.workitem.WorkItem/"+id)
+    attachments.push({
+    	"fallback": matches[i],
+    	"color": "#16B8DF",
+    	"title_link": process.env.JAZZ_URI + "/resource/itemName/com.ibm.team.workitem.WorkItem/" + id,
+    	"title": "Work Item " + id
+
+    })
+  }
+  if (attachments.length > 0) {
+  	bot.reply(message, {
+  		"attachments": attachments
+  	})
   }
 })
