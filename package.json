@@ -6,7 +6,6 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "4.13.x",
     "botkit": "0.0.8",
     "cfenv": "1.0.x"
   },
