@@ -28,13 +28,14 @@ controller.hears(['(task|story|epic|defect) (\d*)'],'ambient',function(bot, mess
   var matches = message.text.match(/(task|story|epic|defect) (\d*)/ig)
   var attachments = [];
   for(var i=0; i < matches.length; i++){
-    var id = matches[i].split(" ")[1]
+    var parts = matches[i].split(" ")
+    var type = parts[0].toLowerCase()
+    var id = parts[1]
     attachments.push({
     	"fallback": matches[i],
     	"color": "#16B8DF",
     	"title_link": process.env.JAZZ_URI + "/resource/itemName/com.ibm.team.workitem.WorkItem/" + id,
-    	"title": "Work Item " + id
-
+    	"title": type.charAt(0).toUpperCase() + type.slice(1) + " " + id
     })
   }
   if (attachments.length > 0) {
