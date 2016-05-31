@@ -13,12 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
-/*eslint-env node*/
 
-//------------------------------------------------------------------------------
-// node.js starter application for Bluemix
-//------------------------------------------------------------------------------
+/*eslint-env node*/
 
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
@@ -33,7 +29,8 @@ var controller = Botkit.slackbot({
 })
 
 var bot = controller.spawn({
-  token: process.env.BOT_API_TOKEN
+  token: process.env.BOT_API_TOKEN,
+  retry: Infinity
 }).startRTM(function(err) {
 	if (err) {
 		console.error("Bot failed to connect to Slack. Error: " + err)
