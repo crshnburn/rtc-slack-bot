@@ -37,8 +37,8 @@ var bot = controller.spawn({
 	}
 })
 
-controller.hears('(task|story|epic|defect) (\\d+)',['ambient', 'direct_message'],function(bot, message){
-  var matches = message.text.match(/(task|story|epic|defect) (\d+)/ig)
+controller.hears('\\b(task|story|epic|defect) (\\d+)',['ambient', 'direct_message'],function(bot, message){
+  var matches = message.text.match(/\b(task|story|epic|defect) (\d+)/ig)
   var attachments = []
   var ids = []
   if (matches != undefined) {
