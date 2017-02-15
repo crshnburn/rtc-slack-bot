@@ -23,43 +23,43 @@ var cfenv = require('cfenv');
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
-var Botkit = require('botkit')
+var Botkit = require('botkit');
 var controller = Botkit.slackbot({
   debug: false
-})
+});
 
 var bot = controller.spawn({
   token: process.env.BOT_API_TOKEN,
   retry: Infinity
 }).startRTM(function(err) {
 	if (err) {
-		console.error("Bot failed to connect to Slack. Error: " + err)
+		console.error("Bot failed to connect to Slack. Error: " + err);
 	}
-})
+});
 
 controller.hears('\\b(task|story|epic|defect) (\\d+)',['ambient', 'direct_message'],function(bot, message){
-  var matches = message.text.match(/\b(task|story|epic|defect) (\d+)/ig)
-  var attachments = []
-  var ids = []
-  if (matches != undefined) {
+  var matches = message.text.match(/\b(task|story|epic|defect) (\d+)/ig);
+  var attachments = [];
+  var ids = [];
+  if (matches !== undefined) {
     for(var i=0; i < matches.length; i++){
-      var parts = matches[i].split(" ")
-      var type = parts[0].toLowerCase()
-      var id = parts[1]
+      var parts = matches[i].split(" ");
+      var type = parts[0].toLowerCase();
+      var id = parts[1];
       if(ids.indexOf(id) == -1){
-        ids.push(id)
+        ids.push(id);
         attachments.push({
         	"fallback": matches[i],
         	"color": "#16B8DF",
         	"title_link": process.env.JAZZ_URI + "/resource/itemName/com.ibm.team.workitem.WorkItem/" + id,
         	"title": type.charAt(0).toUpperCase() + type.slice(1) + " " + id
-        })
+        });
       }
     }
   }
   if (attachments.length > 0) {
   	bot.reply(message, {
   		"attachments": attachments
-  	})
+  	});
   }
-})
+});
