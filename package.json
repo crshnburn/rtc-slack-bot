@@ -6,11 +6,8 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "botkit": "^0.4.10",
-    "cfenv": "1.0.x"
+    "botkit": "^4.0.2",
+    "cfenv": "^1.2.2"
   },
-  "repository": {},
-  "engines": {
-    "node": "4.2.x"
-  }
+  "repository": {}
 }
